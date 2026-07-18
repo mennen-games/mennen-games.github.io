@@ -27,17 +27,29 @@ python -m http.server 8000
 
 Jeder Push auf `main` löst den Workflow aus und veröffentlicht die Seite automatisch.
 
+## Sprachen
+
+Zweisprachig DE/EN über einen Toggle im Header (client-seitig, `data-i18n`).
+Persistenz in `localStorage`, Auto-Erkennung der Browsersprache.
+
+## Inhalte (echt, aus den Projekt-Verzeichnissen)
+
+- **Code Tycoon** — 2D-Software-Dev-/Wirtschaftssimulation, live auf Steam
+  ([app/4347780](https://store.steampowered.com/app/4347780/), Demo: app/4417500).
+- **Code Rescue** — interaktives Programmier-Lernspiel (3D), in Entwicklung, gebaut mit PHPolygon.
+- **PHPolygon** ist eine **eigene** GitHub-Org: https://github.com/phpolygon/phpolygon (MIT).
+- Studio-Org: https://github.com/mennen-games · Kontakt: hmennen90@gmail.com
+
 ## Struktur
 
 ```
-index.html                 # Hauptseite (Hero, Spiele, Engine, Über uns)
+index.html                 # Hauptseite (Hero, Spiele, Engine, Über uns) + i18n
 404.html                   # Fehlerseite
 assets/favicon.svg         # App-Mark (M mit Caret)
 .github/workflows/deploy.yml
 ```
 
-## Noch offen / Platzhalter
+## Optional / später
 
-- Spiel-Beschreibungen, Genres und Preise für **Code Tycoon** und **Code Rescue** sind Platzhalter.
-- Kontakt-Mailadresse `hallo@mennengames.dev` ggf. anpassen.
-- Optional: eigene Domain (CNAME) statt `mennen-games.github.io`.
+- Eigene Domain (CNAME) statt `mennen-games.github.io`.
+- Screenshots / OG-Image für Social-Previews.

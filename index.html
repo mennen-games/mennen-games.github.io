@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mennen Games — Indie Game Studio</title>
-<meta name="description" content="Mennen Games — ein unabhängiges Spielestudio. Aus Idee wird Spiel. Kommerzielle Spiele, angetrieben von PHPolygon, unserer Open-Source-Engine in PHP." />
+<meta name="description" id="meta-desc" content="Mennen Games — ein unabhängiges Spielestudio. Aus Idee wird Spiel. Kommerzielle Spiele, angetrieben von PHPolygon, unserer Open-Source-Engine in PHP." />
 <meta name="theme-color" content="#0A1217" />
 
 <!-- Open Graph -->
@@ -70,11 +70,17 @@
   .brand .mk b{font-weight:700;font-size:17px;color:var(--offwhite);letter-spacing:-.04em}
   .brand .mk i{position:absolute;right:8px;bottom:8px;width:2.5px;height:9px;background:var(--mint);border-radius:1px}
   .brand .g{color:var(--mint)}
+  .nav-right{display:flex;align-items:center;gap:8px}
   nav.links{display:flex;align-items:center;gap:4px}
   nav.links a{font-family:var(--mono);font-size:13.5px;color:var(--muted);padding:8px 13px;border-radius:9px;transition:.15s}
   nav.links a:hover{color:var(--offwhite);background:var(--petrol-3)}
   .gh-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--offwhite);border:1px solid var(--line-strong);padding:8px 14px;border-radius:10px;transition:.15s;margin-left:6px}
   .gh-btn:hover{border-color:var(--mint);background:rgba(77,217,191,.08)}
+  /* Sprach-Toggle */
+  .langtoggle{display:inline-flex;gap:3px;background:var(--petrol-3);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .langtoggle button{font-family:var(--mono);font-size:12px;color:var(--muted);background:none;border:none;padding:5px 11px;border-radius:999px;cursor:pointer;transition:.15s}
+  .langtoggle button:hover{color:var(--offwhite)}
+  .langtoggle button.on{color:var(--petrol);background:var(--mint);font-weight:700}
   .burger{display:none;background:none;border:1px solid var(--line-strong);color:var(--offwhite);width:42px;height:40px;border-radius:10px;cursor:pointer;font-size:18px}
 
   /* ===== Buttons ===== */
@@ -127,17 +133,18 @@
   .thumb-flat{background:linear-gradient(#bfe3f2,#8fcfe6 50%,#2E86AB 50%,#2E86AB 72%,#e6dcc0 72%)}
   .thumb-flat .sun{position:absolute;top:16px;right:26px;width:30px;height:30px;border-radius:50%;background:#F5D475;z-index:1}
   .thumb-flat .isl{position:absolute;bottom:0;left:0;right:0;height:30px;background:#6FBF73;z-index:1}
-  .thumb-poly{background:var(--petrol);display:grid;place-items:center}
   .card .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
   .card .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}
   .card h3{font-size:19px}
   .tag{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--line-strong);color:var(--muted);white-space:nowrap}
   .tag.live{color:var(--mint);border-color:rgba(77,217,191,.4);background:rgba(77,217,191,.08)}
-  .tag.plan{color:var(--violet);border-color:rgba(127,119,221,.4);background:rgba(127,119,221,.1)}
+  .tag.dev{color:var(--acc-rescue);border-color:rgba(245,212,117,.4);background:rgba(245,212,117,.09)}
   .card p.desc{color:var(--muted);font-size:14px;margin:0}
-  .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:15px;border-top:1px solid var(--line);margin-top:16px}
+  .card .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:15px;border-top:1px solid var(--line);margin-top:16px}
   .card .foot .accent-role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ca)}
-  .card .foot .price{font-family:var(--mono);font-weight:500;font-size:14px;color:var(--muted)}
+  .card .foot .go{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ca);white-space:nowrap}
+  .card .foot .go:hover{text-decoration:underline}
+  .card .foot .devnote{font-family:var(--mono);font-size:12px;color:var(--muted-2);white-space:nowrap}
 
   /* ===== Engine banner ===== */
   .engine{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;background:linear-gradient(135deg,rgba(127,119,221,.12),rgba(77,217,191,.06));border:1px solid var(--line-strong);border-radius:22px;padding:42px}
@@ -217,16 +224,22 @@
       <span class="mk"><b>M</b><i></i></span>
       <span>Mennen <span class="g">Games</span></span>
     </a>
-    <nav class="links" id="navlinks">
-      <a href="#spiele">Spiele</a>
-      <a href="#engine">Engine</a>
-      <a href="#ueber">Über uns</a>
-      <a class="gh-btn desk" href="https://github.com/mennen-games" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.32c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.81.06 1.24.83 1.24.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        GitHub
-      </a>
-    </nav>
-    <button class="burger" aria-label="Menü" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="nav-right">
+      <nav class="links" id="navlinks">
+        <a href="#spiele" data-i18n="nav.games">Spiele</a>
+        <a href="#engine" data-i18n="nav.engine">Engine</a>
+        <a href="#ueber" data-i18n="nav.about">Über uns</a>
+        <a class="gh-btn desk" href="https://github.com/mennen-games" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.32c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.81.06 1.24.83 1.24.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </nav>
+      <div class="langtoggle" id="langtoggle" role="group" aria-label="Sprache / Language">
+        <button data-lang="de" type="button">DE</button>
+        <button data-lang="en" type="button">EN</button>
+      </div>
+      <button class="burger" aria-label="Menü" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    </div>
   </div>
 </header>
 
@@ -236,13 +249,13 @@
   <div class="scanlines"></div>
   <div class="splash-inner">
     <div class="splash-center">
-      <div class="eyebrow">Unabhängiges Spielestudio</div>
+      <div class="eyebrow" data-i18n="hero.eyebrow">Unabhängiges Spielestudio</div>
       <div class="wordmark" id="wm"></div>
     </div>
-    <p class="splash-sub">Aus Idee wird Spiel. Kommerzielle Titel, angetrieben von <span class="mono" style="color:var(--offwhite)">PHPolygon</span> — unserer Open-Source-Engine in PHP.</p>
+    <p class="splash-sub" data-i18n-html="hero.sub">Aus Idee wird Spiel. Kommerzielle Titel, angetrieben von <span class="mono" style="color:var(--offwhite)">PHPolygon</span> — unserer Open-Source-Engine in PHP.</p>
     <div class="splash-actions">
-      <a class="btn btn-primary" href="#spiele">Unsere Spiele →</a>
-      <a class="btn btn-ghost" href="#engine">PHPolygon-Engine</a>
+      <a class="btn btn-primary" href="#spiele" data-i18n="hero.btnGames">Unsere Spiele →</a>
+      <a class="btn btn-ghost" href="#engine" data-i18n="hero.btnEngine">PHPolygon-Engine</a>
     </div>
   </div>
   <div class="splash-tag">Studio Intro — Mennen Games</div>
@@ -251,10 +264,10 @@
 <!-- ===== STATS ===== -->
 <div class="stats">
   <div class="wrap">
-    <div class="stat"><div class="n">2</div><div class="l">Spiele erhältlich</div></div>
-    <div class="stat"><div class="n"><span class="u">+</span></div><div class="l">Weitere in Planung</div></div>
-    <div class="stat"><div class="n">PHP</div><div class="l">Open-Source-Engine</div></div>
-    <div class="stat"><div class="n">MIT</div><div class="l">Lizenz der Engine</div></div>
+    <div class="stat"><div class="n">2</div><div class="l" data-i18n="stats.available">Studio-Titel</div></div>
+    <div class="stat"><div class="n"><span class="u">Steam</span></div><div class="l" data-i18n="stats.more">Code Tycoon live</div></div>
+    <div class="stat"><div class="n">PHP</div><div class="l" data-i18n="stats.engine">Open-Source-Engine</div></div>
+    <div class="stat"><div class="n">MIT</div><div class="l" data-i18n="stats.license">Lizenz der Engine</div></div>
   </div>
 </div>
 
@@ -263,48 +276,31 @@
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <div class="kicker">Portfolio</div>
-        <h2 class="title">Unsere Spiele</h2>
-        <p class="lead">Kommerzielle Titel — erhältlich und in Planung. Jeder Titel trägt seinen eigenen Akzent, verbunden durch die Studio-Marke.</p>
+        <div class="kicker" data-i18n="games.kicker">Portfolio</div>
+        <h2 class="title" data-i18n="games.title">Unsere Spiele</h2>
+        <p class="lead" data-i18n="games.lead">Kommerzielle Titel — erhältlich und in Planung. Jeder Titel trägt seinen eigenen Akzent, verbunden durch die Studio-Marke.</p>
       </div>
-      <a class="btn btn-ghost" href="https://github.com/mennen-games" target="_blank" rel="noopener">GitHub-Org</a>
+      <a class="btn btn-ghost" href="https://github.com/mennen-games" target="_blank" rel="noopener" data-i18n="games.orgBtn">GitHub-Org</a>
     </div>
 
     <div class="games-grid">
-      <!-- Code Tycoon — Mint -->
+      <!-- Code Tycoon — Mint · auf Steam -->
       <article class="card" style="--ca:var(--acc-tycoon)">
         <div class="thumb thumb-grid"><span class="ta"><span class="ac">C</span>ode Tycoon</span></div>
         <div class="body">
-          <div class="row"><h3>Code Tycoon</h3><span class="tag live">Erhältlich</span></div>
-          <p class="desc">Dark-Neon-Wirtschaftsspiel mit Wireframe-Ästhetik. Genre &amp; Pitch folgen — sag mir, worum es geht, dann steht hier der echte Text.</p>
-          <div class="foot"><span class="accent-role">Signal Mint</span><span class="price">€ — · 2025</span></div>
+          <div class="row"><h3>Code Tycoon</h3><span class="tag live" data-i18n="tag.steam">Auf Steam</span></div>
+          <p class="desc" data-i18n="tycoon.desc">Baue dein Software-Imperium von 1980 bis 2020+: meistere 20+ historische Programmiersprachen von BASIC bis Rust, nimm Kundenprojekte an und liefere vor der Deadline. 2D-Wirtschaftssimulation.</p>
+          <div class="foot"><span class="accent-role">Signal Mint</span><a class="go" href="https://store.steampowered.com/app/4347780/" target="_blank" rel="noopener" data-i18n="tycoon.cta">Auf Steam →</a></div>
         </div>
       </article>
 
-      <!-- Code Rescue — Gold -->
+      <!-- Code Rescue — Gold · in Entwicklung -->
       <article class="card" style="--ca:var(--acc-rescue)">
         <div class="thumb thumb-flat"><span class="sun"></span><span class="isl"></span><span class="ta" style="color:var(--navy)"><span class="ac" style="color:#b98a12">C</span>ode Rescue</span></div>
         <div class="body">
-          <div class="row"><h3>Code Rescue</h3><span class="tag live">Erhältlich</span></div>
-          <p class="desc">Freundliche Flat-Vektor-Welt mit Figuren und Distrikten. Genre &amp; Pitch folgen — Platzhalter, bis die echte Beschreibung steht.</p>
-          <div class="foot"><span class="accent-role">Rescue Gold</span><span class="price">€ — · 2025</span></div>
-        </div>
-      </article>
-
-      <!-- In Planung — Violet -->
-      <article class="card" style="--ca:var(--violet)">
-        <div class="thumb thumb-poly">
-          <svg width="120" height="110" viewBox="0 0 240 220" aria-hidden="true">
-            <polygon fill="#7F77DD" points="120,30 178,62 120,94 62,62"/>
-            <polygon fill="#534AB7" points="62,62 120,94 120,162 62,130"/>
-            <polygon fill="#3C3489" points="120,94 178,62 178,130 120,162"/>
-            <polygon fill="#9F99E8" opacity="0.45" points="120,44 146,58 120,72 94,58"/>
-          </svg>
-        </div>
-        <div class="body">
-          <div class="row"><h3>In Planung</h3><span class="tag plan">Konzept</span></div>
-          <p class="desc">Die nächste Idee wird gerade evaluiert. Gebaut auf PHPolygon — Details folgen. Bleib über GitHub auf dem Laufenden.</p>
-          <div class="foot"><span class="accent-role">Polygon Violet</span><span class="price">TBA</span></div>
+          <div class="row"><h3>Code Rescue</h3><span class="tag dev" data-i18n="tag.dev">In Entwicklung</span></div>
+          <p class="desc" data-i18n="rescue.desc">Interaktives Programmier-Lernspiel in einer lebendigen 3D-Stadt: Code vervollständigen, Bugs fixen, Rätsel lösen — Distrikte für PHP, Python, C#, JS und Rust, die mit deinem Fortschritt aufblühen.</p>
+          <div class="foot"><span class="accent-role">Rescue Gold</span><span class="devnote" data-i18n="rescue.status">Gebaut mit PHPolygon</span></div>
         </div>
       </article>
     </div>
@@ -314,15 +310,15 @@
 <!-- ===== ENGINE ===== -->
 <section class="blk" id="engine">
   <div class="wrap">
-    <div class="kicker">Open Source</div>
+    <div class="kicker" data-i18n="engine.kicker">Open Source</div>
     <div class="engine">
       <div>
-        <span class="badge">◆ MIT-Lizenz · PHP · GitHub</span>
-        <h2>PHPolygon — unsere Engine.</h2>
-        <p>Unsere Spiele laufen auf PHPolygon, einer Game-Engine in PHP, die wir offen auf GitHub entwickeln. Kein Blackbox-Toolkit: du siehst genau, wie sie funktioniert, kannst Fehler melden, mitbauen oder sie für eigene Projekte nutzen. Die Spiele selbst bleiben kommerziell.</p>
+        <span class="badge" data-i18n="engine.badge">◆ MIT-Lizenz · PHP · GitHub</span>
+        <h2 data-i18n="engine.title">PHPolygon — unsere Engine.</h2>
+        <p data-i18n="engine.body">Unsere Spiele laufen auf PHPolygon, einer Game-Engine in PHP, die wir offen auf GitHub entwickeln. Kein Blackbox-Toolkit: du siehst genau, wie sie funktioniert, kannst Fehler melden, mitbauen oder sie für eigene Projekte nutzen. Die Spiele selbst bleiben kommerziell.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="https://github.com/mennen-games" target="_blank" rel="noopener">Repository öffnen</a>
-          <a class="btn btn-ghost" href="#spiele">Spiele damit ansehen</a>
+          <a class="btn btn-primary" href="https://github.com/phpolygon/phpolygon" target="_blank" rel="noopener" data-i18n="engine.btnRepo">Repository öffnen</a>
+          <a class="btn btn-ghost" href="#spiele" data-i18n="engine.btnGames">Spiele damit ansehen</a>
         </div>
       </div>
       <div class="code-card">
@@ -339,10 +335,10 @@
     </div>
 
     <div class="features">
-      <div class="feature"><div class="ic">🐘</div><h3>PHP-native</h3><p>Eine Game-Engine komplett in PHP — ungewöhnlich, aber genau unser Ding.</p></div>
-      <div class="feature"><div class="ic">📖</div><h3>Voll einsehbar</h3><p>Kompletter Quellcode offen auf GitHub — nichts versteckt.</p></div>
-      <div class="feature"><div class="ic">🧱</div><h3>Modular</h3><p>Rendering, Logik und Assets als saubere, austauschbare Bausteine.</p></div>
-      <div class="feature"><div class="ic">⚖️</div><h3>MIT-Lizenz</h3><p>Frei nutzbar — auch für deine eigenen Projekte.</p></div>
+      <div class="feature"><div class="ic">🐘</div><h3 data-i18n="feat.php.t">PHP-native</h3><p data-i18n="feat.php.d">Eine Game-Engine komplett in PHP — ungewöhnlich, aber genau unser Ding.</p></div>
+      <div class="feature"><div class="ic">📖</div><h3 data-i18n="feat.open.t">Voll einsehbar</h3><p data-i18n="feat.open.d">Kompletter Quellcode offen auf GitHub — nichts versteckt.</p></div>
+      <div class="feature"><div class="ic">🧱</div><h3 data-i18n="feat.mod.t">Modular</h3><p data-i18n="feat.mod.d">Rendering, Logik und Assets als saubere, austauschbare Bausteine.</p></div>
+      <div class="feature"><div class="ic">⚖️</div><h3 data-i18n="feat.mit.t">MIT-Lizenz</h3><p data-i18n="feat.mit.d">Frei nutzbar — auch für deine eigenen Projekte.</p></div>
     </div>
   </div>
 </section>
@@ -350,24 +346,24 @@
 <!-- ===== ÜBER UNS ===== -->
 <section class="blk" id="ueber">
   <div class="wrap">
-    <div class="kicker">Über uns</div>
+    <div class="kicker" data-i18n="about.kicker">Über uns</div>
     <div class="about-grid">
       <div>
-        <h2 class="title" style="font-size:clamp(28px,5vw,42px);margin-bottom:18px">Aus Idee<br>wird Spiel.</h2>
-        <p class="lead2">Mennen Games ist ein unabhängiges Studio ohne festes Genre. Was uns als Idee begeistert, evaluieren wir — und wenn es trägt, <strong>bauen wir es</strong>. Manches wird ein fertiges Spiel, manches bleibt Experiment.</p>
-        <p class="lead2">Unsere Spiele sind kommerziell und tragen das Studio. Die Engine dahinter gehen wir anders an: <strong>PHPolygon</strong>, eine Game-Engine in PHP, entwickeln wir offen auf GitHub — transparent und zum Mitmachen.</p>
-        <a class="btn btn-primary" style="margin-top:8px" href="https://github.com/mennen-games" target="_blank" rel="noopener">GitHub-Org ansehen →</a>
+        <h2 class="title" style="font-size:clamp(28px,5vw,42px);margin-bottom:18px" data-i18n-html="about.title">Aus Idee<br>wird Spiel.</h2>
+        <p class="lead2" data-i18n-html="about.p1">Mennen Games ist ein unabhängiges Studio ohne festes Genre. Was uns als Idee begeistert, evaluieren wir — und wenn es trägt, <strong>bauen wir es</strong>. Manches wird ein fertiges Spiel, manches bleibt Experiment.</p>
+        <p class="lead2" data-i18n-html="about.p2">Unsere Spiele sind kommerziell und tragen das Studio. Die Engine dahinter gehen wir anders an: <strong>PHPolygon</strong>, eine Game-Engine in PHP, entwickeln wir offen auf GitHub — transparent und zum Mitmachen.</p>
+        <a class="btn btn-primary" style="margin-top:8px" href="https://github.com/mennen-games" target="_blank" rel="noopener" data-i18n="about.btn">GitHub-Org ansehen →</a>
       </div>
       <div class="about-panel">
-        <div class="value"><div class="ic">💡</div><div><h4>Ideengetrieben</h4><p>Gute Ideen werden evaluiert — und gebaut. Kein festes Genre.</p></div></div>
-        <div class="value"><div class="ic">🔓</div><div><h4>Offene Engine</h4><p>PHPolygon entsteht transparent im Open Source.</p></div></div>
-        <div class="value"><div class="ic">💼</div><div><h4>Kommerziell</h4><p>Unsere Spiele tragen das Studio — unabhängig.</p></div></div>
+        <div class="value"><div class="ic">💡</div><div><h4 data-i18n="val.idea.t">Ideengetrieben</h4><p data-i18n="val.idea.d">Gute Ideen werden evaluiert — und gebaut. Kein festes Genre.</p></div></div>
+        <div class="value"><div class="ic">🔓</div><div><h4 data-i18n="val.open.t">Offene Engine</h4><p data-i18n="val.open.d">PHPolygon entsteht transparent im Open Source.</p></div></div>
+        <div class="value"><div class="ic">💼</div><div><h4 data-i18n="val.comm.t">Kommerziell</h4><p data-i18n="val.comm.d">Unsere Spiele tragen das Studio — unabhängig.</p></div></div>
       </div>
     </div>
 
     <div class="team">
-      <div class="member"><div class="av">H<i></i></div><h4>Hendrik</h4><p>Gründer &amp; Entwicklung</p></div>
-      <div class="member"><div class="av">?<i></i></div><h4>Du?</h4><p>Wir suchen Mitstreiter</p></div>
+      <div class="member"><div class="av">H<i></i></div><h4>Hendrik</h4><p data-i18n="team.founder">Gründer &amp; Entwicklung</p></div>
+      <div class="member"><div class="av">?<i></i></div><h4 data-i18n="team.you">Du?</h4><p data-i18n="team.hiring">Wir suchen Mitstreiter</p></div>
     </div>
   </div>
 </section>
@@ -376,11 +372,11 @@
 <section class="blk" style="border-bottom:none">
   <div class="wrap">
     <div class="cta">
-      <h2>Neues zuerst erfahren</h2>
-      <p>Updates zu Spielen und zur PHPolygon-Engine — folge unserer GitHub-Organisation oder sag einfach Hallo.</p>
+      <h2 data-i18n="cta.title">Neues zuerst erfahren</h2>
+      <p data-i18n="cta.body">Updates zu Spielen und zur PHPolygon-Engine — folge unserer GitHub-Organisation oder sag einfach Hallo.</p>
       <div class="row">
-        <a class="btn btn-primary" href="https://github.com/mennen-games" target="_blank" rel="noopener">GitHub-Org folgen</a>
-        <a class="btn btn-ghost" href="mailto:hallo@mennengames.dev">Kontakt aufnehmen</a>
+        <a class="btn btn-primary" href="https://github.com/mennen-games" target="_blank" rel="noopener" data-i18n="cta.follow">GitHub-Org folgen</a>
+        <a class="btn btn-ghost" href="mailto:hmennen90@gmail.com" data-i18n="cta.contact">Kontakt aufnehmen</a>
       </div>
     </div>
   </div>
@@ -395,33 +391,131 @@
           <span class="mk"><b>M</b><i></i></span>
           <span>Mennen <span class="g">Games</span></span>
         </a>
-        <p>Unabhängiges Spielestudio. Kommerzielle Spiele, angetrieben von PHPolygon — unserer Open-Source-Engine in PHP.</p>
+        <p data-i18n="foot.tagline">Unabhängiges Spielestudio. Kommerzielle Spiele, angetrieben von PHPolygon — unserer Open-Source-Engine in PHP.</p>
       </div>
       <div class="foot-col">
-        <h5>Seiten</h5>
-        <a href="#spiele">Spiele</a>
-        <a href="#engine">Engine</a>
-        <a href="#ueber">Über uns</a>
+        <h5 data-i18n="foot.pages">Seiten</h5>
+        <a href="#spiele" data-i18n="nav.games">Spiele</a>
+        <a href="#engine" data-i18n="nav.engine">Engine</a>
+        <a href="#ueber" data-i18n="nav.about">Über uns</a>
       </div>
       <div class="foot-col">
         <h5>Open Source</h5>
-        <a href="https://github.com/mennen-games" target="_blank" rel="noopener">GitHub-Org</a>
-        <a href="https://github.com/mennen-games" target="_blank" rel="noopener">PHPolygon</a>
+        <a href="https://github.com/mennen-games" target="_blank" rel="noopener" data-i18n="games.orgBtn">GitHub-Org</a>
+        <a href="https://github.com/phpolygon/phpolygon" target="_blank" rel="noopener">PHPolygon</a>
       </div>
       <div class="foot-col">
-        <h5>Kontakt</h5>
-        <a href="mailto:hallo@mennengames.dev">hallo@mennengames.dev</a>
+        <h5 data-i18n="foot.contact">Kontakt</h5>
+        <a href="mailto:hmennen90@gmail.com">hmennen90@gmail.com</a>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Mennen Games</span>
-      <span>Gebaut mit ♥ · gehostet auf GitHub Pages</span>
+      <span data-i18n="foot.built">Gebaut mit ♥ · gehostet auf GitHub Pages</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // ---- Matrix code-stream background ----
+  // ================= i18n =================
+  const I18N = {
+    de: {
+      "meta.title":"Mennen Games — Indie Game Studio",
+      "meta.desc":"Mennen Games — ein unabhängiges Spielestudio. Aus Idee wird Spiel. Kommerzielle Spiele, angetrieben von PHPolygon, unserer Open-Source-Engine in PHP.",
+      "nav.games":"Spiele","nav.engine":"Engine","nav.about":"Über uns",
+      "hero.eyebrow":"Unabhängiges Spielestudio",
+      "hero.sub":"Aus Idee wird Spiel. Kommerzielle Titel, angetrieben von <span class=\"mono\" style=\"color:var(--offwhite)\">PHPolygon</span> — unserer Open-Source-Engine in PHP.",
+      "hero.btnGames":"Unsere Spiele →","hero.btnEngine":"PHPolygon-Engine",
+      "stats.available":"Studio-Titel","stats.more":"Code Tycoon live","stats.engine":"Open-Source-Engine","stats.license":"Lizenz der Engine",
+      "games.kicker":"Portfolio","games.title":"Unsere Spiele",
+      "games.lead":"Zwei Titel rund ums Programmieren — einer live auf Steam, einer in Entwicklung. Jeder trägt seinen eigenen Akzent, verbunden durch die Studio-Marke.",
+      "games.orgBtn":"GitHub-Org",
+      "tag.steam":"Auf Steam","tag.dev":"In Entwicklung","tycoon.cta":"Auf Steam →","rescue.status":"Gebaut mit PHPolygon",
+      "tycoon.desc":"Baue dein Software-Imperium von 1980 bis 2020+: meistere 20+ historische Programmiersprachen von BASIC bis Rust, nimm Kundenprojekte an und liefere vor der Deadline. 2D-Wirtschaftssimulation.",
+      "rescue.desc":"Interaktives Programmier-Lernspiel in einer lebendigen 3D-Stadt: Code vervollständigen, Bugs fixen, Rätsel lösen — Distrikte für PHP, Python, C#, JS und Rust, die mit deinem Fortschritt aufblühen.",
+      "engine.kicker":"Open Source","engine.badge":"◆ MIT-Lizenz · PHP · GitHub","engine.title":"PHPolygon — unsere Engine.",
+      "engine.body":"Unsere Spiele laufen auf PHPolygon, einer Game-Engine in PHP, die wir offen auf GitHub entwickeln. Kein Blackbox-Toolkit: du siehst genau, wie sie funktioniert, kannst Fehler melden, mitbauen oder sie für eigene Projekte nutzen. Die Spiele selbst bleiben kommerziell.",
+      "engine.btnRepo":"Repository öffnen","engine.btnGames":"Spiele damit ansehen",
+      "feat.php.t":"PHP-native","feat.php.d":"Eine Game-Engine komplett in PHP — ungewöhnlich, aber genau unser Ding.",
+      "feat.open.t":"Voll einsehbar","feat.open.d":"Kompletter Quellcode offen auf GitHub — nichts versteckt.",
+      "feat.mod.t":"Modular","feat.mod.d":"Rendering, Logik und Assets als saubere, austauschbare Bausteine.",
+      "feat.mit.t":"MIT-Lizenz","feat.mit.d":"Frei nutzbar — auch für deine eigenen Projekte.",
+      "about.kicker":"Über uns","about.title":"Aus Idee<br>wird Spiel.",
+      "about.p1":"Mennen Games ist ein unabhängiges Studio ohne festes Genre. Was uns als Idee begeistert, evaluieren wir — und wenn es trägt, <strong>bauen wir es</strong>. Manches wird ein fertiges Spiel, manches bleibt Experiment.",
+      "about.p2":"Unsere Spiele sind kommerziell und tragen das Studio. Die Engine dahinter gehen wir anders an: <strong>PHPolygon</strong>, eine Game-Engine in PHP, entwickeln wir offen auf GitHub — transparent und zum Mitmachen.",
+      "about.btn":"GitHub-Org ansehen →",
+      "val.idea.t":"Ideengetrieben","val.idea.d":"Gute Ideen werden evaluiert — und gebaut. Kein festes Genre.",
+      "val.open.t":"Offene Engine","val.open.d":"PHPolygon entsteht transparent im Open Source.",
+      "val.comm.t":"Kommerziell","val.comm.d":"Unsere Spiele tragen das Studio — unabhängig.",
+      "team.founder":"Gründer & Entwicklung","team.you":"Du?","team.hiring":"Wir suchen Mitstreiter",
+      "cta.title":"Neues zuerst erfahren",
+      "cta.body":"Updates zu Spielen und zur PHPolygon-Engine — folge unserer GitHub-Organisation oder sag einfach Hallo.",
+      "cta.follow":"GitHub-Org folgen","cta.contact":"Kontakt aufnehmen",
+      "foot.tagline":"Unabhängiges Spielestudio. Kommerzielle Spiele, angetrieben von PHPolygon — unserer Open-Source-Engine in PHP.",
+      "foot.pages":"Seiten","foot.contact":"Kontakt","foot.built":"Gebaut mit ♥ · gehostet auf GitHub Pages"
+    },
+    en: {
+      "meta.title":"Mennen Games — Indie Game Studio",
+      "meta.desc":"Mennen Games — an independent game studio. From idea to game. Commercial games, powered by PHPolygon, our open-source engine in PHP.",
+      "nav.games":"Games","nav.engine":"Engine","nav.about":"About",
+      "hero.eyebrow":"Independent game studio",
+      "hero.sub":"From idea to game. Commercial titles, powered by <span class=\"mono\" style=\"color:var(--offwhite)\">PHPolygon</span> — our open-source engine in PHP.",
+      "hero.btnGames":"Our games →","hero.btnEngine":"PHPolygon engine",
+      "stats.available":"Studio titles","stats.more":"Code Tycoon live","stats.engine":"Open-source engine","stats.license":"Engine license",
+      "games.kicker":"Portfolio","games.title":"Our games",
+      "games.lead":"Two titles about programming — one live on Steam, one in development. Each carries its own accent, tied together by the studio brand.",
+      "games.orgBtn":"GitHub org",
+      "tag.steam":"On Steam","tag.dev":"In development","tycoon.cta":"On Steam →","rescue.status":"Built with PHPolygon",
+      "tycoon.desc":"Build your software empire from 1980 to 2020+: master 20+ historical programming languages from BASIC to Rust, take on client projects and ship before the deadline. A 2D business sim.",
+      "rescue.desc":"Interactive programming learning game set in a living 3D city: complete code, fix bugs, solve puzzles — districts for PHP, Python, C#, JS and Rust that flourish as you progress.",
+      "engine.kicker":"Open source","engine.badge":"◆ MIT license · PHP · GitHub","engine.title":"PHPolygon — our engine.",
+      "engine.body":"Our games run on PHPolygon, a game engine written in PHP that we develop openly on GitHub. No black-box toolkit: you see exactly how it works, can report bugs, contribute, or use it for your own projects. The games themselves stay commercial.",
+      "engine.btnRepo":"Open repository","engine.btnGames":"See games built with it",
+      "feat.php.t":"PHP-native","feat.php.d":"A game engine written entirely in PHP — unusual, but exactly our thing.",
+      "feat.open.t":"Fully open","feat.open.d":"Complete source code open on GitHub — nothing hidden.",
+      "feat.mod.t":"Modular","feat.mod.d":"Rendering, logic and assets as clean, swappable building blocks.",
+      "feat.mit.t":"MIT license","feat.mit.d":"Free to use — including for your own projects.",
+      "about.kicker":"About","about.title":"From idea<br>to game.",
+      "about.p1":"Mennen Games is an independent studio with no fixed genre. Whatever excites us as an idea we evaluate — and if it holds up, <strong>we build it</strong>. Some of it becomes a finished game, some stays an experiment.",
+      "about.p2":"Our games are commercial and carry the studio. The engine behind them we approach differently: <strong>PHPolygon</strong>, a game engine in PHP, we develop openly on GitHub — transparent and open to contributions.",
+      "about.btn":"View GitHub org →",
+      "val.idea.t":"Idea-driven","val.idea.d":"Good ideas get evaluated — and built. No fixed genre.",
+      "val.open.t":"Open engine","val.open.d":"PHPolygon grows transparently in the open.",
+      "val.comm.t":"Commercial","val.comm.d":"Our games carry the studio — independently.",
+      "team.founder":"Founder & development","team.you":"You?","team.hiring":"We're looking for collaborators",
+      "cta.title":"Hear about it first",
+      "cta.body":"Updates on games and the PHPolygon engine — follow our GitHub organization, or just say hello.",
+      "cta.follow":"Follow the GitHub org","cta.contact":"Get in touch",
+      "foot.tagline":"Independent game studio. Commercial games, powered by PHPolygon — our open-source engine in PHP.",
+      "foot.pages":"Pages","foot.contact":"Contact","foot.built":"Built with ♥ · hosted on GitHub Pages"
+    }
+  };
+
+  function applyLang(lang){
+    const dict = I18N[lang] || I18N.de;
+    document.documentElement.lang = lang;
+    document.title = dict["meta.title"];
+    const md = document.getElementById('meta-desc'); if(md) md.setAttribute('content', dict["meta.desc"]);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const v = dict[el.getAttribute('data-i18n')]; if(v!=null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+      const v = dict[el.getAttribute('data-i18n-html')]; if(v!=null) el.innerHTML = v;
+    });
+    document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+    try{ localStorage.setItem('mg-lang', lang); }catch(e){}
+  }
+
+  (function initLang(){
+    let saved=null; try{ saved=localStorage.getItem('mg-lang'); }catch(e){}
+    const lang = saved || ((navigator.language||'de').toLowerCase().startsWith('de') ? 'de' : 'en');
+    applyLang(lang);
+    document.getElementById('langtoggle').addEventListener('click', e=>{
+      const b=e.target.closest('button[data-lang]'); if(b) applyLang(b.dataset.lang);
+    });
+  })();
+
+  // ================= Matrix code-stream background =================
   const PHP=['function ','class ','$this->','return ','<?php ','public ','private ','static ','::','->','foreach (','if (','use ','namespace ','final ','readonly ','match (','=> ','declare(','} ','{ ','self::','throw '];
   const DOM=['Project','Bug::fix','Feature::done','$state->money','completeFeature','deliver()','MeshRegistry','TimeSystem','Renderer3DSystem','GameUI::ctx','PHPolygon\\','Hmennen90\\','rescueLevel','$project'];
   const HEX=['0xA3F4','0xDEAD','0xBEEF','0xCAFE','0x1337','0b1010','NULL','true','false','==','!==','<<','>>','&&','||','###','...','[01]','{==}'];
@@ -448,7 +542,7 @@
     }
   }
 
-  // ---- Self-typing wordmark: accent on M and G ----
+  // ================= Self-typing wordmark: accent on M and G =================
   const WM='Mennen Games';
   const wm=document.getElementById('wm');
   const accent=(ch,idx)=> (idx===0||idx===7)? '<span class="ac">'+ch+'</span>' : ch;
@@ -466,7 +560,7 @@
     setInterval(()=>{ n=0; (function typeStep(){ render(n); if(n<WM.length){ n++; setTimeout(typeStep,140); } })(); }, 8000);
   }
 
-  // ---- Close mobile nav on link click ----
+  // ================= Close mobile nav on link click =================
   document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>{
     document.getElementById('navlinks').classList.remove('open');
   }));
