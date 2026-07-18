@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mennen Games — Indie Game Studio</title>
+<meta name="description" content="Mennen Games — ein unabhängiges Spielestudio. Aus Idee wird Spiel. Kommerzielle Spiele, angetrieben von PHPolygon, unserer Open-Source-Engine in PHP." />
+<meta name="theme-color" content="#0A1217" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Mennen Games — Aus Idee wird Spiel." />
+<meta property="og:description" content="Unabhängiges Spielestudio. Kommerzielle Spiele, angetrieben von PHPolygon — unserer Open-Source-Engine in PHP." />
+<meta property="og:url" content="https://mennen-games.github.io/" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inconsolata:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* Core studio palette — aus dem Studio-Splash / Brand Guide */
+    --petrol:#0A1217;      /* Deep Petrol — Hintergrund */
+    --petrol-2:#0F1A20;
+    --petrol-3:#14232B;
+    --offwhite:#F2F2EB;    /* Warm Off-White — Text/Wortmarke */
+    /* Adaptiver Akzent — Studio-Default = Mint */
+    --acc-tycoon:#4DD9BF;  /* Signal Mint — Code Tycoon / Studio-Default */
+    --acc-rescue:#F5D475;  /* Rescue Gold — Code Rescue */
+    --mint:#4DD9BF;
+    --mint-dim:rgba(77,217,191,.5);
+    --sa:#4DD9BF;          /* Live-Splash-Akzent */
+    /* Ecosystem */
+    --amber:#E8990E;       /* Code Tycoon Sekundär */
+    --navy:#16344F;        /* Code Rescue Wortmarke */
+    --teal:#3E9E82;        /* Code Rescue Akzent */
+    --violet:#7F77DD;      /* PHPolygon Kristall */
+    --violet-deep:#534AB7;
+    --green:#33E075;       /* Terminal-Grün */
+    /* Neutrals */
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --muted:#8fa0a4;
+    --muted-2:#6a7a7e;
+    --maxw:1140px;
+    --radius:16px;
+    --shadow:0 22px 50px -24px rgba(0,0,0,.85);
+    --mono:'Inconsolata',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--petrol);color:var(--offwhite);
+    font-family:var(--sans);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{margin:0;line-height:1.12;letter-spacing:-.02em;font-weight:600}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  .mono{font-family:var(--mono)}
+
+  /* ===== Header ===== */
+  header.site{position:sticky;top:0;z-index:50;background:rgba(10,18,23,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;font-size:17px;letter-spacing:-.01em}
+  .brand .mk{width:32px;height:32px;border-radius:9px;background:linear-gradient(150deg,var(--petrol-3),var(--petrol));border:1px solid var(--line-strong);display:grid;place-items:center;position:relative;flex:none}
+  .brand .mk b{font-weight:700;font-size:17px;color:var(--offwhite);letter-spacing:-.04em}
+  .brand .mk i{position:absolute;right:8px;bottom:8px;width:2.5px;height:9px;background:var(--mint);border-radius:1px}
+  .brand .g{color:var(--mint)}
+  nav.links{display:flex;align-items:center;gap:4px}
+  nav.links a{font-family:var(--mono);font-size:13.5px;color:var(--muted);padding:8px 13px;border-radius:9px;transition:.15s}
+  nav.links a:hover{color:var(--offwhite);background:var(--petrol-3)}
+  .gh-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--offwhite);border:1px solid var(--line-strong);padding:8px 14px;border-radius:10px;transition:.15s;margin-left:6px}
+  .gh-btn:hover{border-color:var(--mint);background:rgba(77,217,191,.08)}
+  .burger{display:none;background:none;border:1px solid var(--line-strong);color:var(--offwhite);width:42px;height:40px;border-radius:10px;cursor:pointer;font-size:18px}
+
+  /* ===== Buttons ===== */
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 21px;border-radius:11px;font-weight:600;font-size:14.5px;cursor:pointer;border:1px solid transparent;transition:.18s;font-family:var(--sans)}
+  .btn-primary{background:var(--mint);color:var(--petrol);box-shadow:0 14px 30px -14px rgba(77,217,191,.7)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px -14px rgba(77,217,191,.8)}
+  .btn-ghost{border-color:var(--line-strong);color:var(--offwhite);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--mint);background:rgba(77,217,191,.08)}
+
+  /* ===== Splash hero ===== */
+  .splash{position:relative;min-height:min(84vh,660px);overflow:hidden;display:grid;place-items:center;border-bottom:1px solid var(--line)}
+  #stream{position:absolute;inset:0;overflow:hidden;z-index:0}
+  .srow{position:absolute;white-space:nowrap;font-family:var(--mono);font-weight:500;color:var(--sa);will-change:transform;transition:color .4s}
+  .scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(180deg,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,.22) 3px);mix-blend-mode:multiply;opacity:.5}
+  .splash-inner{position:relative;z-index:2;text-align:center;padding:34px 30px}
+  .splash-center{display:inline-block;padding:26px 40px;background:rgba(10,18,23,.72);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(2px)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mint);margin-bottom:16px}
+  .wordmark{font-family:var(--sans);font-weight:600;font-size:clamp(40px,8.4vw,88px);letter-spacing:-.03em;color:var(--offwhite);white-space:nowrap}
+  .wordmark .ac{color:var(--sa);transition:color .4s}
+  .caret{display:inline-block;width:.06em;min-width:3px;height:.82em;background:var(--sa);vertical-align:-.05em;margin-left:.04em;animation:blink 1s steps(1) infinite}
+  @keyframes blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+  .splash-sub{margin-top:18px;font-size:clamp(16px,2.1vw,20px);color:#cfd6d3;max-width:560px;margin-left:auto;margin-right:auto}
+  .splash-actions{margin-top:28px;display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+  .splash-tag{position:absolute;left:0;right:0;bottom:16px;z-index:2;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted-2)}
+
+  /* ===== Stats strip ===== */
+  .stats{border-bottom:1px solid var(--line);background:var(--petrol-2)}
+  .stats .wrap{display:flex;gap:48px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px}
+  .stat .n{font-family:var(--sans);font-weight:700;font-size:28px;letter-spacing:-.02em}
+  .stat .n .u{color:var(--mint)}
+  .stat .l{color:var(--muted);font-size:13px;font-family:var(--mono);letter-spacing:.02em}
+
+  /* ===== Sections ===== */
+  section.blk{padding:74px 0;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mint);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:22px;height:1px;background:var(--mint)}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+  h2.title{font-size:clamp(27px,4vw,38px)}
+  .lead{color:var(--muted);max-width:600px;font-size:16px;margin:12px 0 0}
+
+  /* ===== Game cards ===== */
+  .games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+  .card{--ca:var(--mint);background:var(--petrol-2);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.22s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-6px);border-color:var(--ca);box-shadow:var(--shadow)}
+  .card .thumb{aspect-ratio:16/10;position:relative;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+  .card .thumb .ta{font-family:var(--sans);font-weight:700;font-size:26px;letter-spacing:-.02em;color:var(--offwhite);text-align:center;padding:0 16px;z-index:2;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+  .card .thumb .ta .ac{color:var(--ca)}
+  .thumb-grid{background-color:var(--petrol);background-image:repeating-linear-gradient(90deg,rgba(77,217,191,.11) 0 1px,transparent 1px 26px),repeating-linear-gradient(0deg,rgba(77,217,191,.06) 0 1px,transparent 1px 26px)}
+  .thumb-grid::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 0,rgba(232,153,14,.18),transparent 55%)}
+  .thumb-flat{background:linear-gradient(#bfe3f2,#8fcfe6 50%,#2E86AB 50%,#2E86AB 72%,#e6dcc0 72%)}
+  .thumb-flat .sun{position:absolute;top:16px;right:26px;width:30px;height:30px;border-radius:50%;background:#F5D475;z-index:1}
+  .thumb-flat .isl{position:absolute;bottom:0;left:0;right:0;height:30px;background:#6FBF73;z-index:1}
+  .thumb-poly{background:var(--petrol);display:grid;place-items:center}
+  .card .body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+  .card .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}
+  .card h3{font-size:19px}
+  .tag{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--line-strong);color:var(--muted);white-space:nowrap}
+  .tag.live{color:var(--mint);border-color:rgba(77,217,191,.4);background:rgba(77,217,191,.08)}
+  .tag.plan{color:var(--violet);border-color:rgba(127,119,221,.4);background:rgba(127,119,221,.1)}
+  .card p.desc{color:var(--muted);font-size:14px;margin:0}
+  .card .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:15px;border-top:1px solid var(--line);margin-top:16px}
+  .card .foot .accent-role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ca)}
+  .card .foot .price{font-family:var(--mono);font-weight:500;font-size:14px;color:var(--muted)}
+
+  /* ===== Engine banner ===== */
+  .engine{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;background:linear-gradient(135deg,rgba(127,119,221,.12),rgba(77,217,191,.06));border:1px solid var(--line-strong);border-radius:22px;padding:42px}
+  .engine .badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);border:1px solid rgba(127,119,221,.35);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+  .engine h2{font-size:clamp(25px,3.6vw,35px);margin-bottom:13px}
+  .engine p{color:var(--muted);font-size:15.5px;margin:0 0 22px;max-width:500px}
+  .engine .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .code-card{background:#0c141a;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-family:var(--mono);font-size:13.5px}
+  .code-card .bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);color:var(--muted-2)}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .code-card .cbody{padding:16px 18px;line-height:1.8;color:#cdd6d3}
+  .code-card .cm{color:var(--muted-2)}
+  .code-card .kw{color:var(--violet)}
+  .code-card .fn{color:var(--mint)}
+  .code-card .st{color:var(--green)}
+  .code-card .vr{color:var(--amber)}
+
+  /* ===== Features ===== */
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:34px}
+  .feature{background:var(--petrol-2);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .feature .ic{width:40px;height:40px;border-radius:11px;background:rgba(77,217,191,.1);border:1px solid rgba(77,217,191,.2);display:grid;place-items:center;font-size:19px;margin-bottom:15px}
+  .feature h3{font-size:16px;margin-bottom:7px}
+  .feature p{color:var(--muted);font-size:13.5px;margin:0}
+
+  /* ===== About ===== */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+  .about-grid .lead2{color:var(--muted);font-size:16px;margin:0 0 16px}
+  .about-grid .lead2 strong{color:var(--offwhite);font-weight:600}
+  .about-panel{background:var(--petrol-2);border:1px solid var(--line);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;gap:18px}
+  .value{display:flex;gap:15px;align-items:flex-start}
+  .value .ic{width:38px;height:38px;border-radius:11px;background:rgba(77,217,191,.1);border:1px solid rgba(77,217,191,.2);display:grid;place-items:center;font-size:18px;flex:none}
+  .value h4{font-size:15px;margin:0 0 4px}
+  .value p{margin:0;font-size:13.5px;color:var(--muted)}
+  .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-top:38px}
+  .member{background:var(--petrol-2);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center}
+  .member .av{width:60px;height:60px;border-radius:14px;margin:0 auto 13px;background:linear-gradient(150deg,var(--petrol-3),var(--petrol));border:1px solid var(--line-strong);display:grid;place-items:center;font-family:var(--sans);font-weight:700;font-size:24px;color:var(--offwhite);position:relative}
+  .member .av i{position:absolute;right:14px;bottom:14px;width:3px;height:13px;background:var(--mint);border-radius:1px}
+  .member h4{font-size:15px;margin:0 0 2px}
+  .member p{color:var(--muted);font-size:12.5px;margin:0;font-family:var(--mono)}
+
+  /* ===== CTA ===== */
+  .cta{background:linear-gradient(135deg,rgba(77,217,191,.14),rgba(245,212,117,.07));border:1px solid var(--line-strong);border-radius:22px;padding:54px 40px;text-align:center}
+  .cta h2{font-size:clamp(25px,4vw,36px);margin-bottom:13px}
+  .cta p{color:var(--muted);max-width:480px;margin:0 auto 26px}
+  .cta .row{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+
+  /* ===== Footer ===== */
+  footer.site{padding:46px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .foot-brand{max-width:290px}
+  .foot-brand p{color:var(--muted);font-size:13.5px;margin:14px 0 0}
+  .foot-col h5{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin:0 0 13px}
+  .foot-col a{display:block;color:var(--muted);font-size:14px;padding:5px 0;transition:.15s}
+  .foot-col a:hover{color:var(--offwhite)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:38px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted-2);font-family:var(--mono);font-size:12px;flex-wrap:wrap;gap:10px}
+
+  @media(max-width:860px){
+    .engine,.about-grid{grid-template-columns:1fr}
+    nav.links,.gh-btn.desk{display:none}
+    .burger{display:block}
+    nav.links.open{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--petrol-2);border-bottom:1px solid var(--line);padding:14px 26px;gap:4px}
+    nav.links.open a{padding:12px 14px}
+    nav.links.open .gh-btn{display:inline-flex;margin-left:0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .srow{display:none}
+    .caret{animation:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <span class="mk"><b>M</b><i></i></span>
+      <span>Mennen <span class="g">Games</span></span>
+    </a>
+    <nav class="links" id="navlinks">
+      <a href="#spiele">Spiele</a>
+      <a href="#engine">Engine</a>
+      <a href="#ueber">Über uns</a>
+      <a class="gh-btn desk" href="https://github.com/mennen-games" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.32c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.05-.49.05-.49.81.06 1.24.83 1.24.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </nav>
+    <button class="burger" aria-label="Menü" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- ===== SPLASH HERO ===== -->
+<div class="splash" id="top">
+  <div id="stream"></div>
+  <div class="scanlines"></div>
+  <div class="splash-inner">
+    <div class="splash-center">
+      <div class="eyebrow">Unabhängiges Spielestudio</div>
+      <div class="wordmark" id="wm"></div>
+    </div>
+    <p class="splash-sub">Aus Idee wird Spiel. Kommerzielle Titel, angetrieben von <span class="mono" style="color:var(--offwhite)">PHPolygon</span> — unserer Open-Source-Engine in PHP.</p>
+    <div class="splash-actions">
+      <a class="btn btn-primary" href="#spiele">Unsere Spiele →</a>
+      <a class="btn btn-ghost" href="#engine">PHPolygon-Engine</a>
+    </div>
+  </div>
+  <div class="splash-tag">Studio Intro — Mennen Games</div>
+</div>
+
+<!-- ===== STATS ===== -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">2</div><div class="l">Spiele erhältlich</div></div>
+    <div class="stat"><div class="n"><span class="u">+</span></div><div class="l">Weitere in Planung</div></div>
+    <div class="stat"><div class="n">PHP</div><div class="l">Open-Source-Engine</div></div>
+    <div class="stat"><div class="n">MIT</div><div class="l">Lizenz der Engine</div></div>
+  </div>
+</div>
+
+<!-- ===== SPIELE ===== -->
+<section class="blk" id="spiele">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Portfolio</div>
+        <h2 class="title">Unsere Spiele</h2>
+        <p class="lead">Kommerzielle Titel — erhältlich und in Planung. Jeder Titel trägt seinen eigenen Akzent, verbunden durch die Studio-Marke.</p>
+      </div>
+      <a class="btn btn-ghost" href="https://github.com/mennen-games" target="_blank" rel="noopener">GitHub-Org</a>
+    </div>
+
+    <div class="games-grid">
+      <!-- Code Tycoon — Mint -->
+      <article class="card" style="--ca:var(--acc-tycoon)">
+        <div class="thumb thumb-grid"><span class="ta"><span class="ac">C</span>ode Tycoon</span></div>
+        <div class="body">
+          <div class="row"><h3>Code Tycoon</h3><span class="tag live">Erhältlich</span></div>
+          <p class="desc">Dark-Neon-Wirtschaftsspiel mit Wireframe-Ästhetik. Genre &amp; Pitch folgen — sag mir, worum es geht, dann steht hier der echte Text.</p>
+          <div class="foot"><span class="accent-role">Signal Mint</span><span class="price">€ — · 2025</span></div>
+        </div>
+      </article>
+
+      <!-- Code Rescue — Gold -->
+      <article class="card" style="--ca:var(--acc-rescue)">
+        <div class="thumb thumb-flat"><span class="sun"></span><span class="isl"></span><span class="ta" style="color:var(--navy)"><span class="ac" style="color:#b98a12">C</span>ode Rescue</span></div>
+        <div class="body">
+          <div class="row"><h3>Code Rescue</h3><span class="tag live">Erhältlich</span></div>
+          <p class="desc">Freundliche Flat-Vektor-Welt mit Figuren und Distrikten. Genre &amp; Pitch folgen — Platzhalter, bis die echte Beschreibung steht.</p>
+          <div class="foot"><span class="accent-role">Rescue Gold</span><span class="price">€ — · 2025</span></div>
+        </div>
+      </article>
+
+      <!-- In Planung — Violet -->
+      <article class="card" style="--ca:var(--violet)">
+        <div class="thumb thumb-poly">
+          <svg width="120" height="110" viewBox="0 0 240 220" aria-hidden="true">
+            <polygon fill="#7F77DD" points="120,30 178,62 120,94 62,62"/>
+            <polygon fill="#534AB7" points="62,62 120,94 120,162 62,130"/>
+            <polygon fill="#3C3489" points="120,94 178,62 178,130 120,162"/>
+            <polygon fill="#9F99E8" opacity="0.45" points="120,44 146,58 120,72 94,58"/>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="row"><h3>In Planung</h3><span class="tag plan">Konzept</span></div>
+          <p class="desc">Die nächste Idee wird gerade evaluiert. Gebaut auf PHPolygon — Details folgen. Bleib über GitHub auf dem Laufenden.</p>
+          <div class="foot"><span class="accent-role">Polygon Violet</span><span class="price">TBA</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENGINE ===== -->
+<section class="blk" id="engine">
+  <div class="wrap">
+    <div class="kicker">Open Source</div>
+    <div class="engine">
+      <div>
+        <span class="badge">◆ MIT-Lizenz · PHP · GitHub</span>
+        <h2>PHPolygon — unsere Engine.</h2>
+        <p>Unsere Spiele laufen auf PHPolygon, einer Game-Engine in PHP, die wir offen auf GitHub entwickeln. Kein Blackbox-Toolkit: du siehst genau, wie sie funktioniert, kannst Fehler melden, mitbauen oder sie für eigene Projekte nutzen. Die Spiele selbst bleiben kommerziell.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/mennen-games" target="_blank" rel="noopener">Repository öffnen</a>
+          <a class="btn btn-ghost" href="#spiele">Spiele damit ansehen</a>
+        </div>
+      </div>
+      <div class="code-card">
+        <div class="bar"><span class="dot" style="background:#ff5f56"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#27c93f"></span><span style="margin-left:6px">game.php</span></div>
+        <div class="cbody">
+<span class="kw">&lt;?php</span><br>
+<span class="cm">// Powered by PHPolygon</span><br>
+<span class="kw">use</span> <span class="fn">PHPolygon\Game</span>;<br><br>
+<span class="vr">$game</span> = <span class="kw">new</span> <span class="fn">Game</span>(<span class="st">'Code Tycoon'</span>);<br>
+<span class="vr">$game</span>-&gt;<span class="fn">scene</span>(<span class="st">'main'</span>);<br>
+<span class="vr">$game</span>-&gt;<span class="fn">run</span>();
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature"><div class="ic">🐘</div><h3>PHP-native</h3><p>Eine Game-Engine komplett in PHP — ungewöhnlich, aber genau unser Ding.</p></div>
+      <div class="feature"><div class="ic">📖</div><h3>Voll einsehbar</h3><p>Kompletter Quellcode offen auf GitHub — nichts versteckt.</p></div>
+      <div class="feature"><div class="ic">🧱</div><h3>Modular</h3><p>Rendering, Logik und Assets als saubere, austauschbare Bausteine.</p></div>
+      <div class="feature"><div class="ic">⚖️</div><h3>MIT-Lizenz</h3><p>Frei nutzbar — auch für deine eigenen Projekte.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ÜBER UNS ===== -->
+<section class="blk" id="ueber">
+  <div class="wrap">
+    <div class="kicker">Über uns</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="title" style="font-size:clamp(28px,5vw,42px);margin-bottom:18px">Aus Idee<br>wird Spiel.</h2>
+        <p class="lead2">Mennen Games ist ein unabhängiges Studio ohne festes Genre. Was uns als Idee begeistert, evaluieren wir — und wenn es trägt, <strong>bauen wir es</strong>. Manches wird ein fertiges Spiel, manches bleibt Experiment.</p>
+        <p class="lead2">Unsere Spiele sind kommerziell und tragen das Studio. Die Engine dahinter gehen wir anders an: <strong>PHPolygon</strong>, eine Game-Engine in PHP, entwickeln wir offen auf GitHub — transparent und zum Mitmachen.</p>
+        <a class="btn btn-primary" style="margin-top:8px" href="https://github.com/mennen-games" target="_blank" rel="noopener">GitHub-Org ansehen →</a>
+      </div>
+      <div class="about-panel">
+        <div class="value"><div class="ic">💡</div><div><h4>Ideengetrieben</h4><p>Gute Ideen werden evaluiert — und gebaut. Kein festes Genre.</p></div></div>
+        <div class="value"><div class="ic">🔓</div><div><h4>Offene Engine</h4><p>PHPolygon entsteht transparent im Open Source.</p></div></div>
+        <div class="value"><div class="ic">💼</div><div><h4>Kommerziell</h4><p>Unsere Spiele tragen das Studio — unabhängig.</p></div></div>
+      </div>
+    </div>
+
+    <div class="team">
+      <div class="member"><div class="av">H<i></i></div><h4>Hendrik</h4><p>Gründer &amp; Entwicklung</p></div>
+      <div class="member"><div class="av">?<i></i></div><h4>Du?</h4><p>Wir suchen Mitstreiter</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="blk" style="border-bottom:none">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Neues zuerst erfahren</h2>
+      <p>Updates zu Spielen und zur PHPolygon-Engine — folge unserer GitHub-Organisation oder sag einfach Hallo.</p>
+      <div class="row">
+        <a class="btn btn-primary" href="https://github.com/mennen-games" target="_blank" rel="noopener">GitHub-Org folgen</a>
+        <a class="btn btn-ghost" href="mailto:hallo@mennengames.dev">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <span class="mk"><b>M</b><i></i></span>
+          <span>Mennen <span class="g">Games</span></span>
+        </a>
+        <p>Unabhängiges Spielestudio. Kommerzielle Spiele, angetrieben von PHPolygon — unserer Open-Source-Engine in PHP.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Seiten</h5>
+        <a href="#spiele">Spiele</a>
+        <a href="#engine">Engine</a>
+        <a href="#ueber">Über uns</a>
+      </div>
+      <div class="foot-col">
+        <h5>Open Source</h5>
+        <a href="https://github.com/mennen-games" target="_blank" rel="noopener">GitHub-Org</a>
+        <a href="https://github.com/mennen-games" target="_blank" rel="noopener">PHPolygon</a>
+      </div>
+      <div class="foot-col">
+        <h5>Kontakt</h5>
+        <a href="mailto:hallo@mennengames.dev">hallo@mennengames.dev</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Mennen Games</span>
+      <span>Gebaut mit ♥ · gehostet auf GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Matrix code-stream background ----
+  const PHP=['function ','class ','$this->','return ','<?php ','public ','private ','static ','::','->','foreach (','if (','use ','namespace ','final ','readonly ','match (','=> ','declare(','} ','{ ','self::','throw '];
+  const DOM=['Project','Bug::fix','Feature::done','$state->money','completeFeature','deliver()','MeshRegistry','TimeSystem','Renderer3DSystem','GameUI::ctx','PHPolygon\\','Hmennen90\\','rescueLevel','$project'];
+  const HEX=['0xA3F4','0xDEAD','0xBEEF','0xCAFE','0x1337','0b1010','NULL','true','false','==','!==','<<','>>','&&','||','###','...','[01]','{==}'];
+  const pick=a=>a[Math.floor(Math.random()*a.length)];
+  function rowText(){ let s=''; for(let i=0;i<40;i++){ const b=Math.random()*100; s+= b<50?pick(PHP): b<85?pick(DOM):pick(HEX); if(Math.random()<0.25)s+=' '; } return s+s; }
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stream=document.getElementById('stream');
+  if(stream && !reduce){
+    const ROWS=18;
+    for(let i=0;i<ROWS;i++){
+      const d=document.createElement('div');
+      d.className='srow';
+      d.style.fontSize=(11+Math.floor(Math.random()*7))+'px';
+      d.style.top=(100/(ROWS+1)*(i+1))+'%';
+      d.style.opacity=(0.12+Math.random()*0.36).toFixed(2);
+      d.textContent=rowText();
+      stream.appendChild(d);
+      const dir=Math.random()<0.5?-1:1;
+      const speed=16+Math.random()*38;
+      let x= dir>0? -d.scrollWidth/2 : 0;
+      const w=()=>d.scrollWidth/2;
+      (function step(){ x+= dir*speed*0.03; const ww=w(); if(ww>0){ if(x<=-ww)x+=ww; if(x>=0&&dir<0)x-=ww; } d.style.transform='translateX('+x+'px)'; requestAnimationFrame(step); })();
+    }
+  }
+
+  // ---- Self-typing wordmark: accent on M and G ----
+  const WM='Mennen Games';
+  const wm=document.getElementById('wm');
+  const accent=(ch,idx)=> (idx===0||idx===7)? '<span class="ac">'+ch+'</span>' : ch;
+  function render(n){
+    let html='';
+    for(let i=0;i<n;i++){ html+= WM[i]===' '?'&nbsp;':accent(WM[i],i); }
+    html+='<span class="caret"></span>';
+    wm.innerHTML=html;
+  }
+  if(reduce){
+    render(WM.length);
+  } else {
+    let n=0;
+    (function typeStep(){ render(n); if(n<WM.length){ n++; setTimeout(typeStep,140); } })();
+    setInterval(()=>{ n=0; (function typeStep(){ render(n); if(n<WM.length){ n++; setTimeout(typeStep,140); } })(); }, 8000);
+  }
+
+  // ---- Close mobile nav on link click ----
+  document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>{
+    document.getElementById('navlinks').classList.remove('open');
+  }));
+</script>
+</body>
+</html>
