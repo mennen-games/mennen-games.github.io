@@ -138,13 +138,12 @@
   .card h3{font-size:19px}
   .tag{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--line-strong);color:var(--muted);white-space:nowrap}
   .tag.live{color:var(--mint);border-color:rgba(77,217,191,.4);background:rgba(77,217,191,.08)}
-  .tag.dev{color:var(--acc-rescue);border-color:rgba(245,212,117,.4);background:rgba(245,212,117,.09)}
+  .tag.soon{color:var(--acc-rescue);border-color:rgba(245,212,117,.4);background:rgba(245,212,117,.09)}
   .card p.desc{color:var(--muted);font-size:14px;margin:0}
   .card .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:15px;border-top:1px solid var(--line);margin-top:16px}
   .card .foot .accent-role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ca)}
   .card .foot .go{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ca);white-space:nowrap}
   .card .foot .go:hover{text-decoration:underline}
-  .card .foot .devnote{font-family:var(--mono);font-size:12px;color:var(--muted-2);white-space:nowrap}
 
   /* ===== Engine banner ===== */
   .engine{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;background:linear-gradient(135deg,rgba(127,119,221,.12),rgba(77,217,191,.06));border:1px solid var(--line-strong);border-radius:22px;padding:42px}
@@ -265,7 +264,7 @@
 <div class="stats">
   <div class="wrap">
     <div class="stat"><div class="n">2</div><div class="l" data-i18n="stats.available">Studio-Titel</div></div>
-    <div class="stat"><div class="n"><span class="u">Steam</span></div><div class="l" data-i18n="stats.more">Code Tycoon live</div></div>
+    <div class="stat"><div class="n"><span class="u">Steam</span></div><div class="l" data-i18n="stats.more">Beide auf Steam</div></div>
     <div class="stat"><div class="n">PHP</div><div class="l" data-i18n="stats.engine">Open-Source-Engine</div></div>
     <div class="stat"><div class="n">MIT</div><div class="l" data-i18n="stats.license">Lizenz der Engine</div></div>
   </div>
@@ -298,9 +297,9 @@
       <article class="card" style="--ca:var(--acc-rescue)">
         <div class="thumb thumb-flat"><span class="sun"></span><span class="isl"></span><span class="ta" style="color:var(--navy)"><span class="ac" style="color:#b98a12">C</span>ode Rescue</span></div>
         <div class="body">
-          <div class="row"><h3>Code Rescue</h3><span class="tag dev" data-i18n="tag.dev">In Entwicklung</span></div>
+          <div class="row"><h3>Code Rescue</h3><span class="tag soon" data-i18n="tag.soon">Demnächst</span></div>
           <p class="desc" data-i18n="rescue.desc">Interaktives Programmier-Lernspiel in einer lebendigen 3D-Stadt: Code vervollständigen, Bugs fixen, Rätsel lösen — Distrikte für PHP, Python, C#, JS und Rust, die mit deinem Fortschritt aufblühen.</p>
-          <div class="foot"><span class="accent-role">Rescue Gold</span><span class="devnote" data-i18n="rescue.status">Gebaut mit PHPolygon</span></div>
+          <div class="foot"><span class="accent-role">Rescue Gold</span><a class="go" href="https://store.steampowered.com/app/4852040/" target="_blank" rel="noopener" data-i18n="rescue.cta">Auf Steam vormerken →</a></div>
         </div>
       </article>
     </div>
@@ -363,7 +362,6 @@
 
     <div class="team">
       <div class="member"><div class="av">H<i></i></div><h4>Hendrik</h4><p data-i18n="team.founder">Gründer &amp; Entwicklung</p></div>
-      <div class="member"><div class="av">?<i></i></div><h4 data-i18n="team.you">Du?</h4><p data-i18n="team.hiring">Wir suchen Mitstreiter</p></div>
     </div>
   </div>
 </section>
@@ -426,11 +424,11 @@
       "hero.eyebrow":"Unabhängiges Spielestudio",
       "hero.sub":"Aus Idee wird Spiel. Kommerzielle Titel, angetrieben von <span class=\"mono\" style=\"color:var(--offwhite)\">PHPolygon</span> — unserer Open-Source-Engine in PHP.",
       "hero.btnGames":"Unsere Spiele →","hero.btnEngine":"PHPolygon-Engine",
-      "stats.available":"Studio-Titel","stats.more":"Code Tycoon live","stats.engine":"Open-Source-Engine","stats.license":"Lizenz der Engine",
+      "stats.available":"Studio-Titel","stats.more":"Beide auf Steam","stats.engine":"Open-Source-Engine","stats.license":"Lizenz der Engine",
       "games.kicker":"Portfolio","games.title":"Unsere Spiele",
-      "games.lead":"Zwei Titel rund ums Programmieren — einer live auf Steam, einer in Entwicklung. Jeder trägt seinen eigenen Akzent, verbunden durch die Studio-Marke.",
+      "games.lead":"Zwei Titel rund ums Programmieren — einer live auf Steam, einer in Kürze. Jeder trägt seinen eigenen Akzent, verbunden durch die Studio-Marke.",
       "games.orgBtn":"GitHub-Org",
-      "tag.steam":"Auf Steam","tag.dev":"In Entwicklung","tycoon.cta":"Auf Steam →","rescue.status":"Gebaut mit PHPolygon",
+      "tag.steam":"Auf Steam","tag.soon":"Demnächst","tycoon.cta":"Auf Steam →","rescue.cta":"Auf Steam vormerken →",
       "tycoon.desc":"Baue dein Software-Imperium von 1980 bis 2020+: meistere 20+ historische Programmiersprachen von BASIC bis Rust, nimm Kundenprojekte an und liefere vor der Deadline. 2D-Wirtschaftssimulation.",
       "rescue.desc":"Interaktives Programmier-Lernspiel in einer lebendigen 3D-Stadt: Code vervollständigen, Bugs fixen, Rätsel lösen — Distrikte für PHP, Python, C#, JS und Rust, die mit deinem Fortschritt aufblühen.",
       "engine.kicker":"Open Source","engine.badge":"◆ MIT-Lizenz · PHP · GitHub","engine.title":"PHPolygon — unsere Engine.",
@@ -447,7 +445,7 @@
       "val.idea.t":"Ideengetrieben","val.idea.d":"Gute Ideen werden evaluiert — und gebaut. Kein festes Genre.",
       "val.open.t":"Offene Engine","val.open.d":"PHPolygon entsteht transparent im Open Source.",
       "val.comm.t":"Kommerziell","val.comm.d":"Unsere Spiele tragen das Studio — unabhängig.",
-      "team.founder":"Gründer & Entwicklung","team.you":"Du?","team.hiring":"Wir suchen Mitstreiter",
+      "team.founder":"Gründer & Entwicklung",
       "cta.title":"Neues zuerst erfahren",
       "cta.body":"Updates zu Spielen und zur PHPolygon-Engine — folge unserer GitHub-Organisation oder sag einfach Hallo.",
       "cta.follow":"GitHub-Org folgen","cta.contact":"Kontakt aufnehmen",
@@ -461,11 +459,11 @@
       "hero.eyebrow":"Independent game studio",
       "hero.sub":"From idea to game. Commercial titles, powered by <span class=\"mono\" style=\"color:var(--offwhite)\">PHPolygon</span> — our open-source engine in PHP.",
       "hero.btnGames":"Our games →","hero.btnEngine":"PHPolygon engine",
-      "stats.available":"Studio titles","stats.more":"Code Tycoon live","stats.engine":"Open-source engine","stats.license":"Engine license",
+      "stats.available":"Studio titles","stats.more":"Both on Steam","stats.engine":"Open-source engine","stats.license":"Engine license",
       "games.kicker":"Portfolio","games.title":"Our games",
-      "games.lead":"Two titles about programming — one live on Steam, one in development. Each carries its own accent, tied together by the studio brand.",
+      "games.lead":"Two titles about programming — one live on Steam, one coming soon. Each carries its own accent, tied together by the studio brand.",
       "games.orgBtn":"GitHub org",
-      "tag.steam":"On Steam","tag.dev":"In development","tycoon.cta":"On Steam →","rescue.status":"Built with PHPolygon",
+      "tag.steam":"On Steam","tag.soon":"Coming soon","tycoon.cta":"On Steam →","rescue.cta":"Wishlist on Steam →",
       "tycoon.desc":"Build your software empire from 1980 to 2020+: master 20+ historical programming languages from BASIC to Rust, take on client projects and ship before the deadline. A 2D business sim.",
       "rescue.desc":"Interactive programming learning game set in a living 3D city: complete code, fix bugs, solve puzzles — districts for PHP, Python, C#, JS and Rust that flourish as you progress.",
       "engine.kicker":"Open source","engine.badge":"◆ MIT license · PHP · GitHub","engine.title":"PHPolygon — our engine.",
@@ -482,7 +480,7 @@
       "val.idea.t":"Idea-driven","val.idea.d":"Good ideas get evaluated — and built. No fixed genre.",
       "val.open.t":"Open engine","val.open.d":"PHPolygon grows transparently in the open.",
       "val.comm.t":"Commercial","val.comm.d":"Our games carry the studio — independently.",
-      "team.founder":"Founder & development","team.you":"You?","team.hiring":"We're looking for collaborators",
+      "team.founder":"Founder & development",
       "cta.title":"Hear about it first",
       "cta.body":"Updates on games and the PHPolygon engine — follow our GitHub organization, or just say hello.",
       "cta.follow":"Follow the GitHub org","cta.contact":"Get in touch",
